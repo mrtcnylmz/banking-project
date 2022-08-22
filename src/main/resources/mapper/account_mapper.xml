@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.mrtcnylmz.bankingsystem.Repository.AccountRepository">
+	
+	<insert id="insertAccount" parameterType="Account" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO accounts(user_id, bank_id, number, type, creation_date, last_update_date) VALUES(#{userId}, #{bankId}, #{number}, #{type}, #{creationDate}, #{lastUpdate})
+	</insert>
+
+	<select id="selectAccountWithId" resultType="Account" parameterType="int">
+		SELECT * FROM accounts WHERE id = #{id}
+	</select>
+	
+	<select id="selectUserIdWithId" resultType="int" parameterType="int">
+		SELECT user_id FROM accounts WHERE id = #{id}
+	</select>
+	
+	<update id="updateAccountIsDeletedWithId">
+		UPDATE accounts SET is_deleted = #{1} WHERE id = #{id}
+	</update>
+	
+	<update id="updateAccountBalanceWithId">
+		UPDATE accounts SET balance = #{balance} WHERE id = #{id}
+	</update>
+	
+	<update id="updateAccountLastUpdateWithId">
+		UPDATE accounts SET last_update_date = #{lastUpdateDate} WHERE id = #{id}
+	</update>
+	
+	
+</mapper>
