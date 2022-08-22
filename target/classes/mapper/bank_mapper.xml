@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.mrtcnylmz.bankingsystem.Repository.BankRepository">
+
+    <insert id="insertBank" parameterType="Bank" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO banks(name) VALUES(#{name})
+	</insert>
+
+	<select id="selectBankWithId" resultType="Bank" parameterType="int">
+		SELECT * FROM banks WHERE id = #{id}
+	</select>
+	
+	<select id="selectBankWithName" resultType="Bank" parameterType="String">
+		SELECT * FROM banks WHERE name = #{name}
+	</select>
+	
+</mapper>

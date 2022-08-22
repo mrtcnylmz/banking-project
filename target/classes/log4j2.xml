@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+         <Console name="Console" target="SYSTEM_OUT">
+         	<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+         </Console>
+         
+        <RollingFile name="Logs" fileName="./logs/logs.txt" filePattern="./logs/logs-%d{-dd-MMMM-yyyy}-%i.txt.gz" >
+            <PatternLayout>
+            	<pattern>%msg%n</pattern>
+            </PatternLayout>
+            
+            <Policies>
+            	<OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10 MB" />
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    
+    <Loggers>
+    	<Root level="INFO">
+    		<AppenderRef ref="Console"/>
+    	</Root>
+     
+        <Logger name="com.mrtcnylmz.bankingsystem.Configurations.Consumer" level="LOGS">
+    		<AppenderRef ref="Logs"/>
+        </Logger>
+    </Loggers>
+</Configuration>
